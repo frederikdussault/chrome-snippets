@@ -23,6 +23,7 @@
       flex-grow: 1;
       flex-direction: row;
       padding: 10px;
+      font-size: 1.7rem;
     }
 
     .expandedRulesCol {
@@ -43,11 +44,9 @@
   // methods
   function addDomainsOfPinnedRule () {
     /* Show/hide domain with a pinned rule */
-    $unPinned   = $colDomains.find('.list-group-item:not(.list-group-item-warning, .list-group-item.disabled)')
-
     $('<a id="togglePinned">Toggle Pinned</a>')
       .on('click', function() {
-        $unPinned.toggleClass('hide')
+        $colDomains.find('.list-group-item:not(.list-group-item-warning, .list-group-item.disabled)').toggleClass('hide')
       })
       .appendTo('<li>')
       .appendTo($menu)
