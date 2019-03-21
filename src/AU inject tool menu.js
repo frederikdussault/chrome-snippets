@@ -8,7 +8,7 @@
 
 (function ($) {
   function injectStyles () {
-    styles = `
+    var styles = `
     :root {
       --colWidth: 600px;
     }
@@ -34,11 +34,11 @@
       textOverflow: inherit !important;
       overflow: visible !important;
     }
-    `
+    `;
 
     $styles = $('<style id="adToolStyles" type="text/css">')
       .text(styles)
-      .appendTo('head')
+      .appendTo('head');
   } // end - injectStyles
 
   // methods
@@ -46,39 +46,37 @@
     /* Show/hide domain with a pinned rule */
     $('<a id="togglePinned">Toggle Pinned</a>')
       .on('click', function() {
-        $colDomains.find('.list-group-item:not(.list-group-item-warning, .list-group-item.disabled)').toggleClass('hide')
+        $colDomains.find('.list-group-item:not(.list-group-item-warning, .list-group-item.disabled)').toggleClass('hide');
       })
       .appendTo('<li>')
-      .appendTo($menu)
+      .appendTo($menu);
   } // end - addDomainsOfPinnedRule
 
   function addToggleRuleColumnWidth () {
     /* Resize the Rule column */
-    $rules    = $colRules.find(".list-group-item div:not(.dropdown)")
-
     $('<a id="toggleWidth">Toggle Rule col width</a>')
       .appendTo('<li>')
       .appendTo($menu)
       .on('click', function() {
-        $colRules.toggleClass('expandedRulesCol')
-        $rules.toggleClass('expandedRulesRow')
-    })
+        $colRules.toggleClass('expandedRulesCol');
+        $colRules.find(".list-group-item div:not(.dropdown)").toggleClass('expandedRulesRow');
+    });
 } // end - addToggleRuleColumnWidth
 
   // Execution
 
-  $styles = {}
-  $container = $('.navbar-header')
-  $menu = $('<ul id="adToolMenu"></ul>')
-  $columns = $("#root > div > div")
-  $colDomains = $columns.eq(0)
-  $colZones = $columns.eq(2)
-  $colRules = $columns.eq(2)
+  var $styles = {},
+    $container = $('.navbar-header'),
+    $menu = $('<ul id="adToolMenu"></ul>'),
+    $columns = $("#root > div > div"),
+    $colDomains = $columns.eq(0),
+    $colZones = $columns.eq(2),
+    $colRules = $columns.eq(2);
 
-  injectStyles()
+  injectStyles();
 
-  $menu.appendTo($container)
-  addDomainsOfPinnedRule()
-  addToggleRuleColumnWidth()
+  $menu.appendTo($container);
+  addDomainsOfPinnedRule();
+  addToggleRuleColumnWidth();
 
 })(jQuery)
