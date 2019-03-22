@@ -2,6 +2,7 @@
 !redirect-test-ext
 
 **/dist/
+**/temp/
 
 **/*-lock.json
 !.eslintrc.json

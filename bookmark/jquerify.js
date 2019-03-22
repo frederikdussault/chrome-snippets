@@ -1,0 +1,1 @@
+javascript:!function(){if(!window.jQuery){var dollarInUse=!!window.$,s=document.createElement("script");s.setAttribute("src","//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"),s.addEventListener("load",function(){console.log("jQuery loaded!"),dollarInUse&&(jQuery.noConflict(),console.log("`$` already in use; use `jQuery`"))}),document.body.appendChild(s)}}();

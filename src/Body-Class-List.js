@@ -1,11 +1,12 @@
-//Body Class List
-/*
-Log applied classes on body of document
-
-Added:
-log URL of edit link of post and pages
-*/
 (function (){
+    //Body Class List
+    /*
+    Log applied classes on body of document
+
+    Added:
+    log URL of edit link of post and pages
+    */
+
     var body = document.getElementsByTagName('body')[0];
 
     // list them

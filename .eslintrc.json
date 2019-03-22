@@ -4,10 +4,16 @@
         "commonjs": true,
         "es6": true
     },
+    "plugins": [
+        "json"
+    ],
     "parserOptions": {
         "ecmaFeatures": {},
         "ecmaVersion": 8,
         "sourceType": "module"
+    },
+    "globals": {
+        "chrome": false
     },
     "rules": {
         "no-const-assign": "warn",
@@ -17,8 +23,5 @@
         "no-unused-vars": "warn",
         "constructor-super": "warn",
         "valid-typeof": "warn"
-    },
-    "globals": {
-        "chrome": false
     }
 }

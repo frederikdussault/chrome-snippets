@@ -1,0 +1,1 @@
+javascript:$("#fb-root  div").remove();

@@ -14,6 +14,7 @@ module.exports = function (grunt) {
             src: 'src',
             temp: 'temp',
             dist: 'dist',
+            bookmarks: 'bookmarks'
         },
 
         /** 
@@ -39,13 +40,13 @@ module.exports = function (grunt) {
                 src: ['package.json', 'Gruntfile.js']
             },
         },
-          
+
         /**  
         * clean
         */
         clean: {
-            dev: ['<%= project.dist %>', '<%= project.temp %>'],
-            temp: ['<%= project.temp %>']
+            dist: ['<%= project.dist %>', '<%= project.temp %>'],
+            bookmarks: ['<%= project.bookmarks %>']
         },
 
         /**  
@@ -57,7 +58,7 @@ module.exports = function (grunt) {
                     style: 'expanded'
                 },
                 files: {
-                    '<%= project.dist %>/css/app.css': ['<%= project.src %>/scss/app.scss']
+                    '<%= project.dist %>/css/app.css': ['<%= project.src %>/scss/*.scss']
                 }
             },
         },
@@ -111,17 +112,55 @@ module.exports = function (grunt) {
                 tasks: ['clean:temp', 'eslint'],
             },
         },
+
+        /**
+         * Compression
+         */
+        uglify: {
+            options: {
+                mangle: false,
+                compress: {
+                    drop_console: false
+                }
+            },
+            bookmarks: {
+                files: [{
+                    expand: true,
+                    cwd: 'src',
+                    src: '**/*.js',
+                    dest: 'temp'
+                }]
+            }
+        },
+
+        /**
+ * javascript: autoexec wrapper
+ */
+        wrap: {
+            bookmarks: {
+                expand: true,
+                cwd: 'temp',
+                src: '*.js',
+                dest: 'bookmark',
+                options: {
+                    wrapper: ['javascript:', ''],
+                    separator: ''
+                }
+            },
+        },
+
+
     });
 
     /**
      *  convertir le code visé en une seule ligne et insérer dans un wrap javascript
      */
 
-    // TODO: create a task function 
     // TODO: add minimizer to remove linefeeds and tabs (get all code on one line)
     // TODO: add a task to wrap the code in javascript:( [code line here] )
 
 
 
-    grunt.registerTask('default', ['clean', 'newer:eslint', 'watch']);
+    grunt.registerTask('default', ['clean:dist', 'newer:eslint', 'watch']);
+    grunt.registerTask('bookm', ['newer:eslint', 'uglify', 'wrap']);
 };

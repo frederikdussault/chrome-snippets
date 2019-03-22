@@ -1,27 +1,29 @@
-function nbDaysSincePublished ($msg) {
-  $timestamp = $msg.find('.yj-message-attributes a[title].yj-message-timestamp')
-  text = $timestamp.text()
+javascript: (function ($) {
+  function nbDaysSincePublished($msg) {
+    var $timestamp = $msg.find('.yj-message-attributes a[title].yj-message-timestamp')
+    var text = $timestamp.text()
 
-  if ( text.includes('ago') ) return 1;
-  
+    if (text.includes('ago')) return 1;
 
-  // a = text.match(/(\w+) (\d+), (\d+) at (\d+[:]{1}\d+ [A|P]M)/i)
-  a = text.match(/(\w+) (\d+)(, )?(\d+)? at (\d+[:]{1}\d+ [A|P]M)/i)
-  y = a[4] || '2019'
-  d = new Date(a[1]+' '+a[2]+', '+y)
-  
-  td = Date.now()
 
-  _24hours = 24 * 60 * 60 * 1000
+    // a = text.match(/(\w+) (\d+), (\d+) at (\d+[:]{1}\d+ [A|P]M)/i)
+    var a = text.match(/(\w+) (\d+)(, )?(\d+)? at (\d+[:]{1}\d+ [A|P]M)/i)
+    var y = a[4] || '2019'
+    var d = new Date(a[1] + ' ' + a[2] + ', ' + y)
 
-  return Math.floor( (td - d) / _24hours )
-}
+    var td = Date.now()
 
-//$articles = $('.was-unviewed')
-$articles = $('li')
-$messages = $articles.find('.yj-message-list-item--message-container.yj-message-container')
-$aMessage = $messages.eq(0)
+    var _24hours = 24 * 60 * 60 * 1000
 
-console.log( 'Published ' + nbDaysSincePublished($aMessage) + ' day(s) ago' )
+    return Math.floor((td - d) / _24hours)
+  }
 
-console.log( 'Published ' + nbDaysSincePublished($messages.eq(50)) + ' day(s) ago' )
+  //$articles = $('.was-unviewed')
+  var $articles = $('li')
+  var $messages = $articles.find('.yj-message-list-item--message-container.yj-message-container')
+  var $aMessage = $messages.eq(0)
+
+  console.log('Published ' + nbDaysSincePublished($aMessage) + ' day(s) ago')
+
+  console.log('Published ' + nbDaysSincePublished($messages.eq(50)) + ' day(s) ago')
+})(jQuery)

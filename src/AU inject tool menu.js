@@ -1,12 +1,15 @@
-/** 
- * To use with AdUtility 
- * 
- * Dependance:
- *  jQuery
- * 
- * */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 
-(function ($) {
+javascript:(function ($) {
+  /** 
+   * To use with AdUtility 
+   * 
+   * Dependance:
+   *  jQuery
+   * 
+   * */
+
   function injectStyles () {
     var styles = `
     :root {
