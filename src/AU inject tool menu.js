@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 
-javascript:(function ($) {
+javascript: (function ($) {
   /** 
    * To use with AdUtility 
    * 
@@ -48,7 +48,7 @@ javascript:(function ($) {
   function addDomainsOfPinnedRule () {
     /* Show/hide domain with a pinned rule */
     $('<a id="togglePinned">Toggle Pinned</a>')
-      .on('click', function() {
+      .on('click', function () {
         $colDomains.find('.list-group-item:not(.list-group-item-warning, .list-group-item.disabled)').toggleClass('hide');
       })
       .appendTo('<li>')
@@ -58,13 +58,25 @@ javascript:(function ($) {
   function addToggleRuleColumnWidth () {
     /* Resize the Rule column */
     $('<a id="toggleWidth">Toggle Rule col width</a>')
-      .appendTo('<li>')
-      .appendTo($menu)
-      .on('click', function() {
+      .on('click', function () {
         $colRules.toggleClass('expandedRulesCol');
         $colRules.find(".list-group-item div:not(.dropdown)").toggleClass('expandedRulesRow');
-    });
-} // end - addToggleRuleColumnWidth
+      })
+      .appendTo('<li>')
+      .appendTo($menu);
+  } // end - addToggleRuleColumnWidth
+
+  function addResetPage () {
+    /* Show/hide domain with a pinned rule */
+    $('<a id="resetPage">Reset Page</a>')
+      .on('click', function () {
+        $colDomains.find('.list-group-item:not(.list-group-item-warning, .list-group-item.disabled)').removeClass('hide');
+        $colRules.removeClass('expandedRulesCol');
+        $colRules.find(".list-group-item div:not(.dropdown)").removeClass('expandedRulesRow');
+      })
+      .appendTo('<li>')
+      .appendTo($menu);
+  } // end - addDomainsOfPinnedRule
 
   // Execution
 
@@ -81,5 +93,6 @@ javascript:(function ($) {
   $menu.appendTo($container);
   addDomainsOfPinnedRule();
   addToggleRuleColumnWidth();
+  addResetPage();
 
 })(jQuery)

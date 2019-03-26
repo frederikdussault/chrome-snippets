@@ -1,29 +1,30 @@
 javascript: (function ($) {
   function nbDaysSincePublished($msg) {
-    var $timestamp = $msg.find('.yj-message-attributes a[title].yj-message-timestamp')
-    var text = $timestamp.text()
+    var $timestamp = $msg.find('.yj-message-attributes a[title].yj-message-timestamp');
+    var text = $timestamp.attr('title'); // eg "9:29 AM March 25" or "9:29 AM March 25, 2018"
 
-    if (text.includes('ago')) return 1;
+    var a = text.match(/(\d+[:]{1}\d+ [A|P]M) (\w+) (\d+)(, )?(\d+)?/i);
 
+    var d = new Date(
+        a[2] + ' ' + 
+        a[3] + ', ' + 
+        ( a[5] || new Date().getFullYear() )
+    );
+    var td = Date.now();
+    var _24hours = 24 * 60 * 60 * 1000;
 
-    // a = text.match(/(\w+) (\d+), (\d+) at (\d+[:]{1}\d+ [A|P]M)/i)
-    var a = text.match(/(\w+) (\d+)(, )?(\d+)? at (\d+[:]{1}\d+ [A|P]M)/i)
-    var y = a[4] || '2019'
-    var d = new Date(a[1] + ' ' + a[2] + ', ' + y)
-
-    var td = Date.now()
-
-    var _24hours = 24 * 60 * 60 * 1000
-
-    return Math.floor((td - d) / _24hours)
+    return Math.floor((td - d) / _24hours);
   }
 
-  //$articles = $('.was-unviewed')
-  var $articles = $('li')
-  var $messages = $articles.find('.yj-message-list-item--message-container.yj-message-container')
-  var $aMessage = $messages.eq(0)
 
-  console.log('Published ' + nbDaysSincePublished($aMessage) + ' day(s) ago')
+  var _NbDayToBeConsideredOld = 180;
 
-  console.log('Published ' + nbDaysSincePublished($messages.eq(50)) + ' day(s) ago')
+  $('.yj-thread-list--body.yj-list-container li.yj-thread-list-item')  // articles
+  .each((i, el)=>{
+    var $message = $(el).eq(0).find('.yj-message-list-item--body.yj-message-body').eq(0);
+    var nbDays = nbDaysSincePublished($message);
+    console.log('Published ' + nbDays + ' day(s) ago');
+
+    if (nbDays >= _NbDayToBeConsideredOld) $(el).hide();
+  });
 })(jQuery)
