@@ -72,7 +72,7 @@ javascript: (function ($) {
       .appendTo($menu);
   } // end - addToggleRuleColumnWidth
 
-  function addResetPage() {
+  function addResetRuleColumn() {
     /* Show/hide domain with a pinned rule */
     $('<a id="resetPage">Reset Page</a>')
       .on('click', function () {
@@ -98,6 +98,6 @@ javascript: (function ($) {
   $menu.appendTo($container); // inject menu
   addDisplayOnlyDomainsOfPinnedRule();
   addToggleRuleColumnWidth();
-  addResetPage();
+  addResetRuleColumn();
 
 })(jQuery)
