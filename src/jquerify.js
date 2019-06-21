@@ -1,3 +1,5 @@
+/* global jQuery */
+
 (function () {
   // jquerify.js
   // https://github.com/bgrins/devtools-snippets

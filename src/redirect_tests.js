@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 /**
  * to use in Google Chrome 65+
  */
@@ -34,7 +36,7 @@ let redirectList = [
 let arr = [];
 let domain = window.location.origin;
 
-promiseList = (redir) => {
+var promiseList = (redir) => {
     let promise = fetch(domain + redir.reqUrl);
 
     promise.then(response => {
@@ -58,10 +60,10 @@ promiseList = (redir) => {
     });
 };
 
-logStatus = (arr) => {
+let logStatus = (arr) => {
     // sort by status
 
-    compareStatus = (a, b) => {
+    let compareStatus = (a, b) => {
         if (a.resStatus < b.resStatus) {
             return -1;
         }
@@ -72,7 +74,7 @@ logStatus = (arr) => {
         // names must be equal
         return 0;            
     };
-    compareRequested = (a, b) => {
+    let compareRequested = (a, b) => {
         if (a.reqUrl < b.reqUrl) {
             return -1;
         }
@@ -84,7 +86,7 @@ logStatus = (arr) => {
         return 0;
     };
 
-    compareStatusThenRequested = (a, b) => {
+    let compareStatusThenRequested = (a, b) => {
         let res = compareStatus(a, b);
 
         // status is equal, compare the next level: Requested url
@@ -97,7 +99,7 @@ logStatus = (arr) => {
         return res;
     };
 
-    compareRequestedThenStatus = (a, b) => {
+    let compareRequestedThenStatus = (a, b) => {
         let res = compareRequested(a, b);
 
         // status is equal, compare the next level: Requested url

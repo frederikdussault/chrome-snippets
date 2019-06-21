@@ -1,3 +1,4 @@
+/* global jQuery */
 // Seaport.js
 (function($){
     var h = 900; // height

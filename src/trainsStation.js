@@ -1,4 +1,6 @@
+/* global jQuery */
+
 // trainsStation.js
-(function(){
+(function($){
     $('#fb-root  div').remove();
-})();
+})(jQuery);

@@ -7,12 +7,12 @@ console.clear();
 
 console.log("Ad Utility Subdomain as section Check \nURL:", window.location.hostname);
 
-var parts = window.location.hostname.split(".");
+let parts = window.location.hostname.split(".");
 parts.forEach((p, i)=>{
     console.log(i + ":", p)
 })
 parts.splice(parts.length - 2, 2);
-section = parts.join(".");
+let section = parts.join(".");
 
 console.log("FD Subdomain > Section: section ", section);
 

@@ -1,3 +1,4 @@
+/* global adUtility */
 /*
 self contained, auto exec function test
 */

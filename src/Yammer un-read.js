@@ -1,3 +1,5 @@
+/* global jQuery */
+
 javascript: (function ($) {
   function nbDaysSincePublished($msg) {
     var $timestamp = $msg.find('.yj-message-attributes a[title].yj-message-timestamp');

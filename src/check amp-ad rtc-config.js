@@ -1,7 +1,7 @@
 (function () { 
     /* code to test amp rtc-config attribute in amp-ad */
     console.log("AMP-AD RTC-CONFIG VALIDATION");
-    ampads = document.querySelectorAll("amp-ad");
+    let ampads = document.querySelectorAll("amp-ad");
 
     if (ampads && ampads.length > 0) {
         ampads.forEach( (ad, index) => {

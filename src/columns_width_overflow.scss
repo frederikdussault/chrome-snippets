@@ -1,0 +1,37 @@
+:root {
+  --colWidth: 300px;
+  --labelWidth: 270px;
+}
+
+/* 
+  update columns width 
+  not really needed if we keep the 
+*/
+#root > div > div,
+#root > div > div .list-group-item {
+  width: var(--colWidth) !important;
+}
+
+/* add overflow to allow rows' text to flow on next line(s) */
+#root > div > div .list-group .list-group-item > a,
+#root > div > div:nth-child(2) .list-group .list-group-item > div:not(".btn-group"), /* applies to all columns */
+#root > div > div:nth-child(3) .list-group .list-group-item > div:not(".btn-group") /* applies to rules column only */
+{
+  width: var(--labelWidth) !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: inherit !important;
+
+  background-color: red;
+}
+
+
+#root > div > div .list-group .list-group-item > a,
+#root > div > div .list-group .list-group-item > div:not(".btn-group")
+{
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: inherit !important;
+
+  background-color: red;
+}

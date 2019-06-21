@@ -10,7 +10,7 @@
     var body = document.getElementsByTagName('body')[0];
 
     // list them
-    for ( cls of body.className.split(' ') ) {
+    for ( var cls of body.className.split(' ') ) {
                    console.log(cls);
 
                    // display Wordpress edit url
