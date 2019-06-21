@@ -1,1 +1,1 @@
-javascript:$("#fb-root  div").remove();
+javascript:jQuery("#fb-root  div").remove();
